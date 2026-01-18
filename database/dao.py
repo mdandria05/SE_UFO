@@ -43,7 +43,9 @@ class DAO:
 
         cursor = conn.cursor(dictionary=True)
         query = """SELECT 
-                    st.id, 
+                    st.id,
+                    st.lat,
+                    st.lng, 
                     (COUNT(s.shape) + COUNT(s.s_datetime)) as weight
                     FROM state st
                     LEFT JOIN sighting s ON st.id = s.state 

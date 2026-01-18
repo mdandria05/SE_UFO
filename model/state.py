@@ -3,6 +3,8 @@ from dataclasses import dataclass
 @dataclass
 class State:
     id: str
+    lat: float
+    lng: float
     weight: int
 
     def __eq__(self,other):

@@ -19,6 +19,7 @@ class Controller:
     def handle_graph(self, e):
         """ Handler per gestire creazione del grafo """
         # TODO
+        self._view.lista_visualizzazione_2.clean()
         year,shape = self._view.dd_year.value,self._view.dd_shape.value
         graph = self._model.create_graph(year,shape)
         self._view.lista_visualizzazione_1.clean()
@@ -33,3 +34,9 @@ class Controller:
     def handle_path(self, e):
         """ Handler per gestire il problema ricorsivo di ricerca del cammino """
         # TODO
+        path,peso,graph = self._model.get_info()
+        self._view.lista_visualizzazione_2.clean()
+        self._view.lista_visualizzazione_2.controls.append(ft.Text(f'Peso cammino massimo: {peso}'))
+        for p,w,d in path:
+            self._view.lista_visualizzazione_2.controls.append(ft.Text(f'{p[0].id} --> {p[1].id}: weight {w} distance {d}'))
+        self._view.update()
